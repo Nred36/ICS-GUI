@@ -5,16 +5,13 @@
  */
 package ics4u;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -27,16 +24,15 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     Methods m = new Methods();
     String[] picz = new String[7];
     ImageIcon[] in = new ImageIcon[7];
-    int rnd, last = 99;
-    int mode = 0;
+    int rnd, mode = 0, streak, curr;
     //used only in counting
     int crnd = (int) Math.ceil(Math.random() * 9);
     int[][] count = new int[10][2];
     int correct = 0, tries = 0;
 
-    //used only in split
-    int num = 3, pic = (int) Math.ceil(Math.random()), iw, ih;
-    BufferedImage img[] = new BufferedImage[num * num];
+    //used only in schedule
+    String[][] clock = new String[3][11];
+    String check;
 
     /**
      * Creates new form ICS
@@ -50,6 +46,12 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
                 picz[i] = br.readLine();
                 in[i] = new ImageIcon(picz[i]);
             }
+            for (int r = 0; r < 3; r++) {
+                for (int c = 0; c < 11; c++) {
+                    clock[r][c] = br.readLine();
+                }
+            }
+            streak = Integer.parseInt(br.readLine());
             fr.close();
             br.close();
         } catch (IOException a) {
@@ -87,20 +89,19 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         count9 = new javax.swing.JLabel();
         score1 = new javax.swing.JLabel();
         score2 = new javax.swing.JLabel();
-        score3 = new javax.swing.JLabel();
+        score4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        out = new javax.swing.JLabel();
+        score3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1185, 649));
         setMinimumSize(new java.awt.Dimension(1185, 649));
-        setPreferredSize(new java.awt.Dimension(1185, 649));
         setResizable(false);
-        setSize(new java.awt.Dimension(1185, 649));
         getContentPane().setLayout(null);
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Counting");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setFocusPainted(true);
@@ -115,7 +116,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         getContentPane().add(jButton2);
         jButton2.setBounds(300, 313, 100, 22);
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Schedule");
         jButton4.setBorder(null);
         jButton4.setFocusPainted(false);
         jButton4.setFocusable(false);
@@ -131,19 +132,33 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
 
         Clock1.setFocusable(false);
         Clock1.setPreferredSize(new java.awt.Dimension(73, 73));
+        Clock1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Clock1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(Clock1);
         Clock1.setBounds(1050, 70, 90, 90);
-        Clock1.getAccessibleContext().setAccessibleName("");
         Clock1.setVisible(false);
 
         Clock3.setFocusable(false);
         Clock3.setPreferredSize(new java.awt.Dimension(73, 73));
+        Clock3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Clock3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(Clock3);
         Clock3.setBounds(1050, 460, 90, 90);
         Clock3.setVisible(false);
 
         Clock2.setFocusable(false);
         Clock2.setPreferredSize(new java.awt.Dimension(73, 73));
+        Clock2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Clock2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(Clock2);
         Clock2.setBounds(1050, 270, 90, 90);
         Clock2.setVisible(false);
@@ -168,61 +183,69 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
 
         count1.setFocusable(false);
         getContentPane().add(count1);
-        count1.setBounds(190, 100, 75, 75);
+        count1.setBounds(190, 100, 100, 100);
 
         count2.setFocusable(false);
         getContentPane().add(count2);
-        count2.setBounds(270, 90, 75, 75);
+        count2.setBounds(270, 90, 100, 100);
 
         count3.setFocusable(false);
         getContentPane().add(count3);
-        count3.setBounds(370, 80, 75, 75);
+        count3.setBounds(370, 80, 100, 100);
 
         count4.setFocusable(false);
         getContentPane().add(count4);
-        count4.setBounds(440, 90, 75, 75);
+        count4.setBounds(440, 90, 100, 100);
 
         count5.setFocusable(false);
         getContentPane().add(count5);
-        count5.setBounds(490, 90, 75, 75);
+        count5.setBounds(490, 90, 100, 100);
 
         count6.setFocusable(false);
         getContentPane().add(count6);
-        count6.setBounds(630, 80, 75, 75);
+        count6.setBounds(630, 80, 100, 100);
 
         count7.setFocusable(false);
         getContentPane().add(count7);
-        count7.setBounds(680, 120, 75, 75);
+        count7.setBounds(680, 120, 100, 100);
 
         count8.setFocusable(false);
         getContentPane().add(count8);
-        count8.setBounds(750, 180, 75, 75);
+        count8.setBounds(750, 180, 100, 100);
 
         count9.setFocusable(false);
         getContentPane().add(count9);
-        count9.setBounds(610, 200, 75, 75);
+        count9.setBounds(610, 200, 100, 100);
 
         score1.setText("Correct: 0");
         score1.setFocusable(false);
         getContentPane().add(score1);
-        score1.setBounds(50, 520, 170, 14);
+        score1.setBounds(50, 500, 170, 14);
         score1.setVisible(false);
 
         score2.setText("Tries: 0");
         score2.setFocusable(false);
         getContentPane().add(score2);
-        score2.setBounds(50, 550, 130, 14);
+        score2.setBounds(50, 530, 130, 14);
         score2.setVisible(false);
 
-        score3.setText("Percent Correct: 0");
-        score3.setFocusable(false);
-        getContentPane().add(score3);
-        score3.setBounds(50, 590, 130, 14);
-        score3.setVisible(false);
+        score4.setText("Longest Streak: "+streak);
+        score4.setFocusable(false);
+        getContentPane().add(score4);
+        score4.setBounds(50, 590, 130, 14);
+        score4.setVisible(false);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(jLabel11);
         jLabel11.setBounds(384, 300, 190, 30);
+        getContentPane().add(out);
+        out.setBounds(300, 250, 80, 40);
+
+        score3.setText("Percent Correct: 0");
+        score3.setFocusable(false);
+        getContentPane().add(score3);
+        score3.setBounds(50, 560, 130, 14);
+        score3.setVisible(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,6 +256,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score1.setVisible(true);
         score2.setVisible(true);
         score3.setVisible(true);
+        score4.setVisible(true);
         mode = 1;
         rnd = (int) Math.ceil(Math.random() * 2 + 4);//runs corresponding game
         count = m.counting(crnd, count, getWidth(), getHeight());
@@ -252,39 +276,39 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
 
     public void countPos() {
         if (crnd >= 1) {
-            count1.setBounds(count[0][0], count[0][1], 75, 75);
+            count1.setBounds(count[0][0], count[0][1], 100, 100);
             count1.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 2) {
-            count2.setBounds(count[1][0], count[1][1], 75, 75);
+            count2.setBounds(count[1][0], count[1][1], 100, 100);
             count2.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 3) {
-            count3.setBounds(count[2][0], count[2][1], 75, 75);
+            count3.setBounds(count[2][0], count[2][1], 100, 100);
             count3.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 4) {
-            count4.setBounds(count[3][0], count[3][1], 75, 75);
+            count4.setBounds(count[3][0], count[3][1], 100, 100);
             count4.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 5) {
-            count5.setBounds(count[4][0], count[4][1], 75, 75);
+            count5.setBounds(count[4][0], count[4][1], 100, 100);
             count5.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 6) {
-            count6.setBounds(count[5][0], count[5][1], 75, 75);
+            count6.setBounds(count[5][0], count[5][1], 100, 100);
             count6.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 7) {
-            count7.setBounds(count[5][0], count[5][1], 75, 75);
+            count7.setBounds(count[6][0], count[6][1], 100, 100);
             count7.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 8) {
-            count8.setBounds(count[6][0], count[6][1], 75, 75);
+            count8.setBounds(count[7][0], count[7][1], 100, 100);
             count8.setIcon(in[rnd]);//draws the blocks in there random position
         }
         if (crnd >= 9) {
-            count9.setBounds(count[7][0], count[7][1], 75, 75);
+            count9.setBounds(count[8][0], count[8][1], 100, 100);
             count9.setIcon(in[rnd]);//draws the blocks in there random position
         }
     }
@@ -300,17 +324,71 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         aClock3.setVisible(true);
         time();
     }//GEN-LAST:event_jButton4ActionPerformed
-    public void time() {
-        
-        jLabel11.setText("Wake up");
-        
-        Clock1.setIcon(in[6]);
-        Clock2.setIcon(in[6]);
-        Clock3.setIcon(in[6]);
 
-        aClock1.setText("10:12 pm");
-        aClock2.setText("10:12 pm");
-        aClock3.setText("10:12 pm");
+    private void Clock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock1ActionPerformed
+        checkClock(aClock1.getText());
+    }//GEN-LAST:event_Clock1ActionPerformed
+
+    private void Clock2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock2ActionPerformed
+        checkClock(aClock2.getText());
+    }//GEN-LAST:event_Clock2ActionPerformed
+
+    private void Clock3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock3ActionPerformed
+        checkClock(aClock3.getText());
+    }//GEN-LAST:event_Clock3ActionPerformed
+    public void checkClock(String s) {
+        if (s.equals(check)) {
+            out.setText("Correct");
+            time();
+        } else {
+            out.setText("Incorrect");
+        }
+    }
+
+    public void time() {
+        crnd = (int) Math.ceil(Math.random() * 3);
+        rnd = (int) Math.ceil(Math.random() * 11 - 1);
+        jLabel11.setText(clock[1][rnd]);
+        if (crnd == 1) {
+            aClock1.setText(clock[0][rnd]);
+            Clock1.setIcon(new ImageIcon(clock[2][rnd]));
+        } else if (crnd == 2) {
+            aClock2.setText(clock[0][rnd]);
+            Clock2.setIcon(new ImageIcon(clock[2][rnd]));
+        } else {
+            aClock3.setText(clock[0][rnd]);
+            Clock3.setIcon(new ImageIcon(clock[2][rnd]));
+        }
+        check = clock[0][rnd];
+        int r1, r2;
+        do {
+            r1 = (int) Math.ceil(Math.random() * 11 - 1);
+            r2 = (int) Math.ceil(Math.random() * 11 - 1);
+            if (r1 != rnd) {
+                if (crnd == 1) {
+                    aClock2.setText(clock[0][r1]);
+                    Clock2.setIcon(new ImageIcon(clock[2][r1]));
+                } else if (crnd == 2) {
+                    aClock3.setText(clock[0][r1]);
+                    Clock3.setIcon(new ImageIcon(clock[2][r1]));
+                } else {
+                    aClock1.setText(clock[0][r1]);
+                    Clock1.setIcon(new ImageIcon(clock[2][r1]));
+                }
+            }
+            if (r2 != rnd && r1 != rnd) {
+                if (crnd == 1) {
+                    aClock3.setText(clock[0][r2]);
+                    Clock3.setIcon(new ImageIcon(clock[2][r2]));
+                } else if (crnd == 2) {
+                    aClock1.setText(clock[0][r2]);
+                    Clock1.setIcon(new ImageIcon(clock[2][r2]));
+                } else {
+                    aClock2.setText(clock[0][r2]);
+                    Clock2.setIcon(new ImageIcon(clock[2][r2]));
+                }
+            }
+        } while (r2 == rnd || r1 == rnd || r1 == r2);
     }
 
     /**
@@ -366,9 +444,11 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel out;
     private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
     private javax.swing.JLabel score3;
+    private javax.swing.JLabel score4;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -384,30 +464,35 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             jButton4.setVisible(true);
         }
         if (mode == 1) {//only lets numbers be pressed
-            if ((e.getKeyChar() == '0' || e.getKeyChar() == '1' || e.getKeyChar() == '2' || e.getKeyChar() == '3' || e.getKeyChar() == '4' || e.getKeyChar() == '5' || e.getKeyChar() == '6' || e.getKeyChar() == '7' || e.getKeyChar() == '8' || e.getKeyChar() == '9') && !jLabel11.getText().equals("Correct")) {
-                if (crnd == Integer.parseInt(String.valueOf(e.getKeyChar())) || (crnd == last * 10)) {//checks if the key pressed is what was generated
-                    jLabel11.setText("Correct");
-                    tries++;
-                    correct++;
-                    last = 99;//resets last
-                } else {
-                    jLabel11.setText("Incorrect");
-                    tries++;
-                }
-            } else if (jLabel11.getText().equals("Correct")) {
+            if (out.getText().equals("Correct")) {
                 countClear();
-                jLabel11.setText("");
+                out.setText("");
                 crnd = (int) Math.ceil(Math.random() * 9);//sets up next round
                 rnd = (int) Math.ceil(Math.random() * 2 + 4);
                 count = m.counting(crnd, count, getWidth(), getHeight());
                 countPos();
-            }
-            score1.setText("Correct: " + correct);
-            score2.setText("Tries: " + tries);
-            if (tries > 0) {
-                score3.setText("Percent Correct: " + Math.round((double) correct / tries * 100) + "%");
+            } else if ((e.getKeyChar() == '0' || e.getKeyChar() == '1' || e.getKeyChar() == '2' || e.getKeyChar() == '3' || e.getKeyChar() == '4' || e.getKeyChar() == '5' || e.getKeyChar() == '6' || e.getKeyChar() == '7' || e.getKeyChar() == '8' || e.getKeyChar() == '9')) {
+                if (crnd == Integer.parseInt(String.valueOf(e.getKeyChar()))) {//checks if the key pressed is what was generated
+                    out.setText("Correct");
+                    tries++;
+                    correct++;
+                    curr++;
+                } else {
+                    out.setText("Incorrect");
+                    tries++;
+                    curr = 0;
+                }
             }
         }
+        if (curr > streak) {
+            streak = curr;
+        }
+        score1.setText("Correct: " + correct);
+        score2.setText("Tries: " + tries);
+        if (tries > 0) {
+            score4.setText("Percent Correct: " + Math.round((double) correct / tries * 100) + "%");
+        }
+        score4.setText("Longest Streak: " + streak);
     }
 
     @Override
@@ -419,4 +504,5 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     public void keyReleased(KeyEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

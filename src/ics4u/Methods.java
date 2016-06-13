@@ -16,12 +16,12 @@ public class Methods {
     public int[][] counting(int crnd, int count[][], int w, int h) {
         int tempx, tempy;
         for (int i = 0; i < crnd; i++) {//creats the number of images predetimed
-            tempx = (int) Math.ceil(Math.random() * (w - 120) + 20);//creats new random x and y
-            tempy = (int) Math.ceil(Math.random() * (h - 160) + 50);
-            Rectangle r = new Rectangle(tempx, tempy, 100, 100);//creates a rectangle where the new potentional shape will be
+            tempx = (int) Math.ceil(Math.random() * (w - 140) + 20);//creats new random x and y
+            tempy = (int) Math.ceil(Math.random() * (h - 180) + 50);
+            Rectangle r = new Rectangle(tempx, tempy, 120, 120);//creates a rectangle where the new potentional shape will be
             int t = 0;
             for (int c = 0; c < i; c++) {//goes through all previous shapes
-                if (r.intersects(count[c][0], count[c][1], 100, 100)) {// checks if the new shape whould be to close to an exesting one
+                if (r.intersects(count[c][0], count[c][1], 120, 120)) {// checks if the new shape whould be to close to an exesting one
                     t = 123;//makes sure next if is false
                     c = 123;//leaves the loop
                 }
