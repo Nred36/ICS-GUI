@@ -5,37 +5,37 @@ PNG_transparency_demonstration_1.png
 PNG_transparency_demonstration_1.png
 download.jpg
 479px-Lol_circle.png
-7:00
-8:30
-9:00
-10:30
-11:45
-12:45
-2:45
-3:30
-6:00
-8:00
-9:00
-thing 1
-thing 2
-thing 3
-thing 4
-thing 5
-thing 6
-thing 7
-thing 8
-thing 9
-thing 10
-thing 11
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-479px-Lol_circle.png
-0
+7:00 am
+8:30 am
+9:00 am
+10:00 am
+11:45 am
+12:45 pm
+2:45 pm
+3:30 pm
+6:00 pm
+8:00 pm
+9:00 pm
+Wake Up
+Catch Bus
+O Canada
+Snack
+Gym
+Lunch
+Schools Over
+Get Home
+Dinner
+Bath
+Bed
+700.png
+830.png
+900.png
+1030.png
+1145.png
+1245.png
+245.png
+330.png
+600.png
+800.png
+900.png
+1

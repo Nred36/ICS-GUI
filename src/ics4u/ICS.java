@@ -5,6 +5,7 @@
  */
 package ics4u;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,8 +15,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.Instant;
-import java.util.Date;
 import javax.swing.ImageIcon;
 
 /**
@@ -63,6 +62,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             System.out.println("Couldn't Load");//if it fails
         }
         initComponents();
+        getContentPane().setBackground(Color.WHITE);
         addKeyListener(this);
     }
 
@@ -99,10 +99,12 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score3 = new javax.swing.JLabel();
         Record = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        Back = new javax.swing.JButton();
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1185, 649));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -112,6 +114,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         });
         getContentPane().setLayout(null);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Counting");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
@@ -125,8 +128,9 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(300, 313, 100, 22);
+        jButton2.setBounds(300, 313, 100, 28);
 
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setText("Schedule");
         jButton4.setBorder(null);
         jButton4.setFocusPainted(false);
@@ -139,7 +143,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(825, 313, 110, 22);
+        jButton4.setBounds(825, 313, 100, 28);
 
         Clock1.setFocusable(false);
         Clock1.setPreferredSize(new java.awt.Dimension(73, 73));
@@ -149,7 +153,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             }
         });
         getContentPane().add(Clock1);
-        Clock1.setBounds(1050, 70, 90, 90);
+        Clock1.setBounds(1000, 80, 100, 100);
         Clock1.setVisible(false);
 
         Clock3.setFocusable(false);
@@ -160,36 +164,39 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             }
         });
         getContentPane().add(Clock3);
-        Clock3.setBounds(1050, 460, 90, 90);
+        Clock3.setBounds(1000, 470, 100, 100);
         Clock3.setVisible(false);
 
         Clock2.setFocusable(false);
-        Clock2.setPreferredSize(new java.awt.Dimension(73, 73));
+        Clock2.setPreferredSize(new java.awt.Dimension(100, 100));
         Clock2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Clock2ActionPerformed(evt);
             }
         });
         getContentPane().add(Clock2);
-        Clock2.setBounds(1050, 270, 90, 90);
+        Clock2.setBounds(1000, 280, 100, 100);
         Clock2.setVisible(false);
 
+        aClock3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         aClock3.setText("jLabel1");
         aClock3.setFocusable(false);
         getContentPane().add(aClock3);
-        aClock3.setBounds(1070, 560, 70, 20);
+        aClock3.setBounds(1010, 570, 90, 30);
         aClock3.setVisible(false);
 
+        aClock1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         aClock1.setText("jLabel1");
         aClock1.setFocusable(false);
         getContentPane().add(aClock1);
-        aClock1.setBounds(1070, 170, 70, 20);
+        aClock1.setBounds(1010, 180, 90, 30);
         aClock1.setVisible(false);
 
+        aClock2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         aClock2.setText("jLabel1");
         aClock2.setFocusable(false);
         getContentPane().add(aClock2);
-        aClock2.setBounds(1070, 370, 70, 20);
+        aClock2.setBounds(1010, 380, 90, 30);
         aClock2.setVisible(false);
 
         count1.setFocusable(false);
@@ -246,11 +253,13 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score4.setBounds(50, 590, 130, 14);
         score4.setVisible(false);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(jLabel11);
         jLabel11.setBounds(384, 300, 190, 30);
+
+        out.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(out);
-        out.setBounds(300, 250, 80, 40);
+        out.setBounds(530, 580, 80, 40);
 
         score3.setText("Percent Correct: 0");
         score3.setFocusable(false);
@@ -258,6 +267,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score3.setBounds(50, 560, 130, 14);
         score3.setVisible(false);
 
+        Record.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Record.setText("Record");
         Record.setFocusable(false);
         Record.addActionListener(new java.awt.event.ActionListener() {
@@ -266,13 +276,25 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             }
         });
         getContentPane().add(Record);
-        Record.setBounds(510, 320, 100, 23);
+        Record.setBounds(530, 313, 100, 28);
 
         jTextField1.setEditable(false);
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setFocusable(false);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(480, 230, 220, 180);
+        jTextField1.setBounds(300, 240, 630, 180);
         jTextField1.setVisible(false);
+
+        Back.setText("Back");
+        Back.setFocusable(false);
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Back);
+        Back.setBounds(40, 40, 73, 23);
+        Back.setVisible(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,6 +307,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score2.setVisible(true);
         score3.setVisible(true);
         score4.setVisible(true);
+        Back.setVisible(true);
         mode = 1;
         rnd = (int) Math.ceil(Math.random() * 2 + 4);//runs corresponding game
         count = m.counting(crnd, count, getWidth(), getHeight());
@@ -345,6 +368,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         jButton4.setVisible(false);
         Record.setVisible(false);
         mode = 1;
+        Back.setVisible(true);
         Clock1.setVisible(true);
         Clock2.setVisible(true);
         Clock3.setVisible(true);
@@ -371,7 +395,11 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         try {
             FileWriter fw = new FileWriter("score.txt");//set place to write to in "Files"
             PrintWriter pw = new PrintWriter(fw); //starts writing   
-            for (int i = 0; i < n + 1; i++) {
+            int ch = 0;
+            if (thisT != 0) {
+                ch = 1;
+            }
+            for (int i = 0; i < n + ch; i++) {
                 pw.println(score[i][0]);
                 pw.println(score[i][1]);
             }
@@ -384,7 +412,6 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             PrintWriter pw = new PrintWriter(fw); //starts writing   
             for (int i = 0; i < picz.length; i++) {
                 pw.println(picz[i]);
-                pw.println(in[i]);
             }
             for (int r = 0; r < 3; r++) {
                 for (int c = 0; c < 11; c++) {
@@ -399,12 +426,25 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     }//GEN-LAST:event_formWindowClosing
 
     private void RecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecordActionPerformed
+        Record.setVisible(false);
+        jButton2.setVisible(false);
+        jButton4.setVisible(false);
         jTextField1.setVisible(true);
+        Back.setVisible(true);
         score = m.score(score, n, thisT);
-        for (int i = 0; i < n; i++) {
-            jTextField1.setText(score[i][0] + " on " + score[i][1] + "\n" + jTextField1.getText());
+        if (n != 0) {
+            for (int i = 0; i < n; i++) {
+                jTextField1.setText(score[i][0] + " on " + score[i][1] + "\n" + jTextField1.getText());
+            }
+        } else {
+            jTextField1.setText("Please play counting to start collecting scores");
         }
     }//GEN-LAST:event_RecordActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        hide();
+        Back.setVisible(false);
+    }//GEN-LAST:event_BackActionPerformed
     public void checkClock(String s) {
         if (s.equals(check)) {
             out.setText("Correct");
@@ -500,6 +540,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JButton Clock1;
     private javax.swing.JButton Clock2;
     private javax.swing.JButton Clock3;
@@ -533,10 +574,30 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         requestFocus();//if something happens ie: click off window it forces its self to the front (needed for key presses)        
     }
 
+    public void hide() {
+        jButton2.setVisible(true);
+        jButton4.setVisible(true);
+        Record.setVisible(true);
+        score1.setVisible(false);
+        score2.setVisible(false);
+        score3.setVisible(false);
+        score4.setVisible(false);
+        Clock1.setVisible(false);
+        Clock2.setVisible(false);
+        Clock3.setVisible(false);
+        jTextField1.setVisible(false);
+        aClock1.setText("");
+        aClock2.setText("");
+        aClock3.setText("");
+        jLabel11.setText("");
+        mode = 0;
+        countClear();
+    }
+
     public void keyPressed(KeyEvent e) {
         if ((e.getKeyChar() == KeyEvent.VK_ESCAPE)) {
-            jButton2.setVisible(true);
-            jButton4.setVisible(true);
+            hide();
+
         }
         if (mode == 1) {//only lets numbers be pressed
             if (out.getText().equals("Correct")) {
