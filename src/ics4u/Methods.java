@@ -6,6 +6,11 @@
 package ics4u;
 
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
 
 /**
  *
@@ -36,6 +41,43 @@ public class Methods {
         return (count);
     }
 
-    public void schedule() {
+    public String[][] score(String score[][], int n, int thisT) {
+        try {
+            FileReader fr = new FileReader("score.txt"); //reads from text file (located in "files"
+            BufferedReader br = new BufferedReader(fr);
+
+            for (int r = 0; r < 25; r++) {
+                score[r][0] = br.readLine();
+                score[r][1] = br.readLine();
+                if (score[r][0] == null) {
+                    n = r;
+                    r = 123;
+                }
+            }
+            br.close();
+            String temp1 = "", temp2 = "";
+            if (thisT != 0) {
+                score[n][0] = thisT + "";
+                score[n][1] = Date.from(Instant.now()) + "";
+                n++;                
+            }
+            if (n > 0) {                
+                for (int i = 0; i < n; i++) {
+                    for (int j = 1; j < (n - i); j++) {
+                        if (Integer.parseInt(score[j - 1][0]) > Integer.parseInt(score[j][0])) {
+                            temp1 = score[j - 1][0];
+                            score[j - 1][0] = score[j][0];
+                            score[j][0] = temp1;
+                            temp2 = score[j - 1][1];
+                            score[j - 1][1] = score[j][1];
+                            score[j][1] = temp2;
+                        }
+                    }
+                }
+            }
+        } catch (IOException a) {
+            System.out.println("Couldn't Load");//if it fails
+        }
+        return(score);
     }
 }
