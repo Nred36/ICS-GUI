@@ -41,11 +41,36 @@ public class Methods {
         return (count);
     }
 
-    public String[][] score(String score[][], int n, int thisT) {
+    public String[][] score(String score[][], int thisT) {
+        int n = num(score);
+        String temp1 = "", temp2 = "";
+        if (thisT != 0) {
+            score[n][0] = thisT + "";
+            score[n][1] = Date.from(Instant.now()) + "";
+            n++;
+        }
+        if (n > 0) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 1; j < (n - i); j++) {
+                    if (Integer.parseInt(score[j - 1][0]) > Integer.parseInt(score[j][0])) {
+                        temp1 = score[j - 1][0];
+                        score[j - 1][0] = score[j][0];
+                        score[j][0] = temp1;
+                        temp2 = score[j - 1][1];
+                        score[j - 1][1] = score[j][1];
+                        score[j][1] = temp2;
+                    }
+                }
+            }
+        }
+        return (score);
+    }
+
+    public int num(String[][] score) {
+        int n = 0;
         try {
             FileReader fr = new FileReader("score.txt"); //reads from text file (located in "files"
             BufferedReader br = new BufferedReader(fr);
-
             for (int r = 0; r < 25; r++) {
                 score[r][0] = br.readLine();
                 score[r][1] = br.readLine();
@@ -55,29 +80,10 @@ public class Methods {
                 }
             }
             br.close();
-            String temp1 = "", temp2 = "";
-            if (thisT != 0) {
-                score[n][0] = thisT + "";
-                score[n][1] = Date.from(Instant.now()) + "";
-                n++;                
-            }
-            if (n > 0) {                
-                for (int i = 0; i < n; i++) {
-                    for (int j = 1; j < (n - i); j++) {
-                        if (Integer.parseInt(score[j - 1][0]) > Integer.parseInt(score[j][0])) {
-                            temp1 = score[j - 1][0];
-                            score[j - 1][0] = score[j][0];
-                            score[j][0] = temp1;
-                            temp2 = score[j - 1][1];
-                            score[j - 1][1] = score[j][1];
-                            score[j][1] = temp2;
-                        }
-                    }
-                }
-            }
+
         } catch (IOException a) {
             System.out.println("Couldn't Load");//if it fails
         }
-        return(score);
+        return (n);
     }
 }
