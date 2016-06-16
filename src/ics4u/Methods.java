@@ -9,6 +9,8 @@ import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 
@@ -41,12 +43,13 @@ public class Methods {
         return (count);
     }
 
-    public String[][] score(String score[][], int thisT) {
-        int n = num(score);
+    public String[][] score(String score[][], int n, int thisT) {
+
         String temp1 = "", temp2 = "";
         if (thisT != 0) {
             score[n][0] = thisT + "";
-            score[n][1] = Date.from(Instant.now()) + "";
+            DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy hh:mm");
+            score[n][1] = dateFormat.format(new Date());
             n++;
         }
         if (n > 0) {
