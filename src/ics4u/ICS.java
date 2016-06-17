@@ -25,15 +25,14 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
 
     //Used across the board
     Methods m = new Methods();
-    String[] picz = new String[7];
-    ImageIcon[] in = new ImageIcon[7];
+    String[] picz = new String[5];
+    ImageIcon[] in = new ImageIcon[5];
     int rnd, streak, mode = 0, curr, thisT;
     //used only in counting
     int crnd = (int) Math.ceil(Math.random() * 9), n;
     int[][] count = new int[10][2];
     int correct = 0, tries = 0;
     String[][] score = new String[25][2];
-
     //used only in schedule
     String[][] clock = new String[3][11];
     String check;
@@ -42,7 +41,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
      * Creates new form ICS
      */
     public ICS() {
-        n = m.num(score);
+        n = m.num(score);//checks the number of scores saved
         try {
             FileReader fr = new FileReader("save.txt"); //reads from text file (located in "files"
             BufferedReader br = new BufferedReader(fr);
@@ -62,9 +61,10 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         } catch (IOException a) {
             System.out.println("Couldn't Load");//if it fails
         }
+
         initComponents();
         getContentPane().setBackground(Color.WHITE);
-        addKeyListener(this);
+        addKeyListener(this);//starts recording key presses
     }
 
     /**
@@ -75,13 +75,14 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        Record = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
-        Clock1 = new javax.swing.JButton();
-        Clock3 = new javax.swing.JButton();
-        Clock2 = new javax.swing.JButton();
+        counting = new javax.swing.JButton();
+        schedule = new javax.swing.JButton();
+        record = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        clock1 = new javax.swing.JButton();
+        clock3 = new javax.swing.JButton();
+        clock2 = new javax.swing.JButton();
+        out = new javax.swing.JLabel();
         score1 = new javax.swing.JLabel();
         score2 = new javax.swing.JLabel();
         score4 = new javax.swing.JLabel();
@@ -98,20 +99,19 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         count7 = new javax.swing.JLabel();
         count8 = new javax.swing.JLabel();
         count9 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        scoreBoard12 = new javax.swing.JLabel();
+        scoreBoard11 = new javax.swing.JLabel();
+        scoreBoard10 = new javax.swing.JLabel();
+        scoreBoard9 = new javax.swing.JLabel();
+        scoreBoard8 = new javax.swing.JLabel();
+        scoreBoard7 = new javax.swing.JLabel();
+        scoreBoard6 = new javax.swing.JLabel();
+        scoreBoard5 = new javax.swing.JLabel();
+        scoreBoard4 = new javax.swing.JLabel();
+        scoreBoard3 = new javax.swing.JLabel();
+        scoreBoard2 = new javax.swing.JLabel();
+        scoreBoard1 = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
-        out = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -127,93 +127,98 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         });
         getContentPane().setLayout(null);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Counting");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusPainted(true);
-        jButton2.setFocusable(false);
-        jButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButton2.setPreferredSize(new java.awt.Dimension(73, 22));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        counting.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        counting.setText("Counting");
+        counting.setBorder(null);
+        counting.setBorderPainted(false);
+        counting.setFocusPainted(true);
+        counting.setFocusable(false);
+        counting.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        counting.setPreferredSize(new java.awt.Dimension(73, 22));
+        counting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                countingActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(342, 310, 100, 28);
+        getContentPane().add(counting);
+        counting.setBounds(342, 310, 100, 28);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setText("Schedule");
-        jButton4.setBorder(null);
-        jButton4.setFocusPainted(false);
-        jButton4.setFocusable(false);
-        jButton4.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButton4.setPreferredSize(new java.awt.Dimension(73, 22));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        schedule.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        schedule.setText("Schedule");
+        schedule.setBorder(null);
+        schedule.setFocusPainted(false);
+        schedule.setFocusable(false);
+        schedule.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        schedule.setPreferredSize(new java.awt.Dimension(73, 22));
+        schedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                scheduleActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(742, 310, 100, 28);
+        getContentPane().add(schedule);
+        schedule.setBounds(742, 310, 100, 28);
 
-        Record.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Record.setText("Record");
-        Record.setFocusable(false);
-        Record.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Record.addActionListener(new java.awt.event.ActionListener() {
+        record.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        record.setText("Record");
+        record.setFocusable(false);
+        record.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        record.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RecordActionPerformed(evt);
+                recordActionPerformed(evt);
             }
         });
-        getContentPane().add(Record);
-        Record.setBounds(542, 310, 100, 28);
+        getContentPane().add(record);
+        record.setBounds(542, 310, 100, 28);
 
-        Back.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Back.setText("Back");
-        Back.setFocusable(false);
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        back.setText("Back");
+        back.setFocusable(false);
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
-        getContentPane().add(Back);
-        Back.setBounds(40, 40, 73, 25);
-        Back.setVisible(false);
+        getContentPane().add(back);
+        back.setBounds(40, 40, 73, 25);
+        back.setVisible(false);
 
-        Clock1.setFocusable(false);
-        Clock1.setPreferredSize(new java.awt.Dimension(73, 73));
-        Clock1.addActionListener(new java.awt.event.ActionListener() {
+        clock1.setFocusable(false);
+        clock1.setPreferredSize(new java.awt.Dimension(73, 73));
+        clock1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clock1ActionPerformed(evt);
+                clock1ActionPerformed(evt);
             }
         });
-        getContentPane().add(Clock1);
-        Clock1.setBounds(1000, 74, 100, 100);
-        Clock1.setVisible(false);
+        getContentPane().add(clock1);
+        clock1.setBounds(1000, 74, 100, 100);
+        clock1.setVisible(false);
 
-        Clock3.setFocusable(false);
-        Clock3.setPreferredSize(new java.awt.Dimension(73, 73));
-        Clock3.addActionListener(new java.awt.event.ActionListener() {
+        clock3.setFocusable(false);
+        clock3.setPreferredSize(new java.awt.Dimension(73, 73));
+        clock3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clock3ActionPerformed(evt);
+                clock3ActionPerformed(evt);
             }
         });
-        getContentPane().add(Clock3);
-        Clock3.setBounds(1000, 474, 100, 100);
-        Clock3.setVisible(false);
+        getContentPane().add(clock3);
+        clock3.setBounds(1000, 474, 100, 100);
+        clock3.setVisible(false);
 
-        Clock2.setFocusable(false);
-        Clock2.setPreferredSize(new java.awt.Dimension(100, 100));
-        Clock2.addActionListener(new java.awt.event.ActionListener() {
+        clock2.setFocusable(false);
+        clock2.setPreferredSize(new java.awt.Dimension(100, 100));
+        clock2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clock2ActionPerformed(evt);
+                clock2ActionPerformed(evt);
             }
         });
-        getContentPane().add(Clock2);
-        Clock2.setBounds(1000, 274, 100, 100);
-        Clock2.setVisible(false);
+        getContentPane().add(clock2);
+        clock2.setBounds(1000, 274, 100, 100);
+        clock2.setVisible(false);
+
+        out.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        out.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(out);
+        out.setBounds(350, 580, 490, 40);
 
         score1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         score1.setText("Correct: 0");
@@ -247,21 +252,21 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         aClock3.setText("jLabel1");
         aClock3.setFocusable(false);
         getContentPane().add(aClock3);
-        aClock3.setBounds(1010, 570, 90, 30);
+        aClock3.setBounds(1020, 570, 80, 30);
         aClock3.setVisible(false);
 
         aClock1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         aClock1.setText("jLabel1");
         aClock1.setFocusable(false);
         getContentPane().add(aClock1);
-        aClock1.setBounds(1010, 170, 90, 30);
+        aClock1.setBounds(1020, 170, 80, 30);
         aClock1.setVisible(false);
 
         aClock2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         aClock2.setText("jLabel1");
         aClock2.setFocusable(false);
         getContentPane().add(aClock2);
-        aClock2.setBounds(1010, 370, 90, 30);
+        aClock2.setBounds(1020, 370, 80, 30);
         aClock2.setVisible(false);
 
         count1.setFocusable(false);
@@ -301,99 +306,94 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         getContentPane().add(count9);
         count9.setBounds(610, 200, 100, 100);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(447, 389, 290, 15);
-        jLabel12.setVisible(false);
+        scoreBoard12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard12);
+        scoreBoard12.setBounds(447, 389, 290, 15);
+        scoreBoard12.setVisible(false);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(447, 375, 290, 15);
-        jLabel11.setVisible(false);
+        scoreBoard11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard11);
+        scoreBoard11.setBounds(447, 375, 290, 15);
+        scoreBoard11.setVisible(false);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(447, 361, 290, 15);
-        jLabel10.setVisible(false);
+        scoreBoard10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard10);
+        scoreBoard10.setBounds(447, 361, 290, 15);
+        scoreBoard10.setVisible(false);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(447, 347, 290, 15);
-        jLabel9.setVisible(false);
+        scoreBoard9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard9);
+        scoreBoard9.setBounds(447, 347, 290, 15);
+        scoreBoard9.setVisible(false);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(447, 333, 290, 15);
-        jLabel8.setVisible(false);
+        scoreBoard8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard8);
+        scoreBoard8.setBounds(447, 333, 290, 15);
+        scoreBoard8.setVisible(false);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(447, 319, 290, 15);
-        jLabel7.setVisible(false);
+        scoreBoard7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard7);
+        scoreBoard7.setBounds(447, 319, 290, 15);
+        scoreBoard7.setVisible(false);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(447, 305, 290, 15);
-        jLabel6.setVisible(false);
+        scoreBoard6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard6);
+        scoreBoard6.setBounds(447, 305, 290, 15);
+        scoreBoard6.setVisible(false);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(447, 291, 290, 15);
-        jLabel5.setVisible(false);
+        scoreBoard5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard5);
+        scoreBoard5.setBounds(447, 291, 290, 15);
+        scoreBoard5.setVisible(false);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(447, 277, 290, 15);
-        jLabel4.setVisible(false);
+        scoreBoard4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard4);
+        scoreBoard4.setBounds(447, 277, 290, 15);
+        scoreBoard4.setVisible(false);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(447, 263, 290, 15);
-        jLabel3.setVisible(false);
+        scoreBoard3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard3);
+        scoreBoard3.setBounds(447, 263, 290, 15);
+        scoreBoard3.setVisible(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(447, 249, 290, 15);
-        jLabel2.setVisible(false);
+        scoreBoard2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard2);
+        scoreBoard2.setBounds(447, 249, 290, 15);
+        scoreBoard2.setVisible(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(447, 235, 290, 15);
-        jLabel1.setVisible(false);
+        scoreBoard1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreBoard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(scoreBoard1);
+        scoreBoard1.setBounds(447, 235, 290, 15);
+        scoreBoard1.setVisible(false);
 
-        info.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        info.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(info);
-        info.setBounds(440, 240, 302, 168);
-
-        out.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        out.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(out);
-        out.setBounds(350, 580, 490, 40);
+        info.setBounds(342, 240, 500, 168);
 
         title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -404,22 +404,22 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        title.setText("Counting");
-        jButton2.setVisible(false);
-        jButton4.setVisible(false);
-        Record.setVisible(false);
+    private void countingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countingActionPerformed
+        title.setText("Counting");//switches to the counting game
+        counting.setVisible(false);
+        schedule.setVisible(false);
+        record.setVisible(false);
         score1.setVisible(true);
         score2.setVisible(true);
         score3.setVisible(true);
         score4.setVisible(true);
-        Back.setVisible(true);
+        back.setVisible(true);
         mode = 1;
-        rnd = (int) Math.ceil(Math.random() * 2 + 4);//runs corresponding game
+        rnd = (int) Math.ceil(Math.random() * 5 - 1);//runs corresponding game
         count = m.counting(crnd, count, getWidth(), getHeight());
         countPos();
-    }//GEN-LAST:event_jButton2ActionPerformed
-    public void countClear() {
+    }//GEN-LAST:event_countingActionPerformed
+    public void countClear() {//clears the icons from the shapes
         count1.setIcon(null);
         count2.setIcon(null);
         count3.setIcon(null);
@@ -469,33 +469,33 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             count9.setIcon(in[rnd]);//draws the blocks in there random position
         }
     }
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleActionPerformed
         title.setText("Schedule");
-        jButton2.setVisible(false);
-        jButton4.setVisible(false);
-        Record.setVisible(false);
+        counting.setVisible(false);
+        schedule.setVisible(false);
+        record.setVisible(false);
         mode = 1;
-        Back.setVisible(true);
-        Clock1.setVisible(true);
-        Clock2.setVisible(true);
-        Clock3.setVisible(true);
+        back.setVisible(true);
+        clock1.setVisible(true);
+        clock2.setVisible(true);
+        clock3.setVisible(true);
         aClock1.setVisible(true);
         aClock2.setVisible(true);
         aClock3.setVisible(true);
         time();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_scheduleActionPerformed
 
-    private void Clock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock1ActionPerformed
+    private void clock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock1ActionPerformed
         checkClock(aClock1.getText());
-    }//GEN-LAST:event_Clock1ActionPerformed
+    }//GEN-LAST:event_clock1ActionPerformed
 
-    private void Clock2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock2ActionPerformed
+    private void clock2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock2ActionPerformed
         checkClock(aClock2.getText());
-    }//GEN-LAST:event_Clock2ActionPerformed
+    }//GEN-LAST:event_clock2ActionPerformed
 
-    private void Clock3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clock3ActionPerformed
+    private void clock3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock3ActionPerformed
         checkClock(aClock3.getText());
-    }//GEN-LAST:event_Clock3ActionPerformed
+    }//GEN-LAST:event_clock3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         score = m.score(score, m.num(score), thisT);
@@ -530,70 +530,70 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void RecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecordActionPerformed
+    private void recordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordActionPerformed
         title.setText("Record");
-        Record.setVisible(false);
-        jButton2.setVisible(false);
-        jButton4.setVisible(false);
-        Back.setVisible(true);
+        record.setVisible(false);
+        counting.setVisible(false);
+        schedule.setVisible(false);
+        back.setVisible(true);
         score = m.score(score, m.num(score), thisT);
         if (n != 0) {
-            jLabel1.setText("Highest Score: " + streak);
-            jLabel1.setVisible(true);
+            scoreBoard1.setText("Highest Score: " + streak);
+            scoreBoard1.setVisible(true);
             if (n >= 1) {
-                jLabel2.setText("A score of " + score[0][0] + " on " + score[0][1]);
-                jLabel2.setVisible(true);
+                scoreBoard2.setText("A score of " + score[0][0] + " on " + score[0][1]);
+                scoreBoard2.setVisible(true);
             }
             if (n >= 2) {
-                jLabel3.setText("A score of " + score[1][0] + " on " + score[1][1]);
-                jLabel3.setVisible(true);
+                scoreBoard3.setText("A score of " + score[1][0] + " on " + score[1][1]);
+                scoreBoard3.setVisible(true);
             }
             if (n >= 3) {
-                jLabel4.setText("A score of " + score[2][0] + " on " + score[2][1]);
-                jLabel4.setVisible(true);
+                scoreBoard4.setText("A score of " + score[2][0] + " on " + score[2][1]);
+                scoreBoard4.setVisible(true);
             }
             if (n >= 4) {
-                jLabel5.setText("A score of " + score[3][0] + " on " + score[3][1]);
-                jLabel5.setVisible(true);
+                scoreBoard5.setText("A score of " + score[3][0] + " on " + score[3][1]);
+                scoreBoard5.setVisible(true);
             }
             if (n >= 5) {
-                jLabel6.setText("A score of " + score[4][0] + " on " + score[4][1]);
-                jLabel6.setVisible(true);
+                scoreBoard6.setText("A score of " + score[4][0] + " on " + score[4][1]);
+                scoreBoard6.setVisible(true);
             }
             if (n >= 6) {
-                jLabel7.setText("A score of " + score[5][0] + " on " + score[5][1]);
-                jLabel7.setVisible(true);
+                scoreBoard7.setText("A score of " + score[5][0] + " on " + score[5][1]);
+                scoreBoard7.setVisible(true);
             }
             if (n >= 7) {
-                jLabel8.setText("A score of " + score[6][0] + " on " + score[6][1]);
-                jLabel8.setVisible(true);
+                scoreBoard8.setText("A score of " + score[6][0] + " on " + score[6][1]);
+                scoreBoard8.setVisible(true);
             }
             if (n >= 8) {
-                jLabel9.setText("A score of " + score[7][0] + " on " + score[7][1]);
-                jLabel9.setVisible(true);
+                scoreBoard9.setText("A score of " + score[7][0] + " on " + score[7][1]);
+                scoreBoard9.setVisible(true);
             }
             if (n >= 9) {
-                jLabel10.setText("A score of " + score[8][0] + " on " + score[8][1]);
-                jLabel10.setVisible(true);
+                scoreBoard10.setText("A score of " + score[8][0] + " on " + score[8][1]);
+                scoreBoard10.setVisible(true);
             }
             if (n >= 10) {
-                jLabel11.setText("A score of " + score[9][0] + " on " + score[9][1]);
-                jLabel11.setVisible(true);
+                scoreBoard11.setText("A score of " + score[9][0] + " on " + score[9][1]);
+                scoreBoard11.setVisible(true);
             }
             if (n >= 11) {
-                jLabel12.setText("A score of " + score[10][0] + " on " + score[10][1]);
-                jLabel12.setVisible(true);
+                scoreBoard12.setText("A score of " + score[10][0] + " on " + score[10][1]);
+                scoreBoard12.setVisible(true);
             }
         } else {
-            jLabel7.setVisible(true);
-            jLabel7.setText("Please play counting to start collecting scores");
+            scoreBoard7.setVisible(true);
+            scoreBoard7.setText("Please play counting to start collecting scores");
         }
-    }//GEN-LAST:event_RecordActionPerformed
+    }//GEN-LAST:event_recordActionPerformed
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         hide();
-        Back.setVisible(false);
-    }//GEN-LAST:event_BackActionPerformed
+        back.setVisible(false);
+    }//GEN-LAST:event_backActionPerformed
     public void checkClock(String s) {
         if (s.equals(check)) {
             out.setText("Correct!");
@@ -609,13 +609,13 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         info.setText(clock[1][rnd]);
         if (crnd == 1) {
             aClock1.setText(clock[0][rnd]);
-            Clock1.setIcon(new ImageIcon(clock[2][rnd]));
+            clock1.setIcon(new ImageIcon(clock[2][rnd]));
         } else if (crnd == 2) {
             aClock2.setText(clock[0][rnd]);
-            Clock2.setIcon(new ImageIcon(clock[2][rnd]));
+            clock2.setIcon(new ImageIcon(clock[2][rnd]));
         } else {
             aClock3.setText(clock[0][rnd]);
-            Clock3.setIcon(new ImageIcon(clock[2][rnd]));
+            clock3.setIcon(new ImageIcon(clock[2][rnd]));
         }
         check = clock[0][rnd];
         int r1, r2;
@@ -625,25 +625,25 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             if (r1 != rnd) {
                 if (crnd == 1) {
                     aClock2.setText(clock[0][r1]);
-                    Clock2.setIcon(new ImageIcon(clock[2][r1]));
+                    clock2.setIcon(new ImageIcon(clock[2][r1]));
                 } else if (crnd == 2) {
                     aClock3.setText(clock[0][r1]);
-                    Clock3.setIcon(new ImageIcon(clock[2][r1]));
+                    clock3.setIcon(new ImageIcon(clock[2][r1]));
                 } else {
                     aClock1.setText(clock[0][r1]);
-                    Clock1.setIcon(new ImageIcon(clock[2][r1]));
+                    clock1.setIcon(new ImageIcon(clock[2][r1]));
                 }
             }
             if (r2 != rnd && r1 != rnd) {
                 if (crnd == 1) {
                     aClock3.setText(clock[0][r2]);
-                    Clock3.setIcon(new ImageIcon(clock[2][r2]));
+                    clock3.setIcon(new ImageIcon(clock[2][r2]));
                 } else if (crnd == 2) {
                     aClock1.setText(clock[0][r2]);
-                    Clock1.setIcon(new ImageIcon(clock[2][r2]));
+                    clock1.setIcon(new ImageIcon(clock[2][r2]));
                 } else {
                     aClock2.setText(clock[0][r2]);
-                    Clock2.setIcon(new ImageIcon(clock[2][r2]));
+                    clock2.setIcon(new ImageIcon(clock[2][r2]));
                 }
             }
         } while (r2 == rnd || r1 == rnd || r1 == r2);
@@ -689,14 +689,13 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Back;
-    private javax.swing.JButton Clock1;
-    private javax.swing.JButton Clock2;
-    private javax.swing.JButton Clock3;
-    private javax.swing.JButton Record;
     private javax.swing.JLabel aClock1;
     private javax.swing.JLabel aClock2;
     private javax.swing.JLabel aClock3;
+    private javax.swing.JButton back;
+    private javax.swing.JButton clock1;
+    private javax.swing.JButton clock2;
+    private javax.swing.JButton clock3;
     private javax.swing.JLabel count1;
     private javax.swing.JLabel count2;
     private javax.swing.JLabel count3;
@@ -706,26 +705,27 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     private javax.swing.JLabel count7;
     private javax.swing.JLabel count8;
     private javax.swing.JLabel count9;
+    private javax.swing.JButton counting;
     private javax.swing.JLabel info;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel out;
+    private javax.swing.JButton record;
+    private javax.swing.JButton schedule;
     private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
     private javax.swing.JLabel score3;
     private javax.swing.JLabel score4;
+    private javax.swing.JLabel scoreBoard1;
+    private javax.swing.JLabel scoreBoard10;
+    private javax.swing.JLabel scoreBoard11;
+    private javax.swing.JLabel scoreBoard12;
+    private javax.swing.JLabel scoreBoard2;
+    private javax.swing.JLabel scoreBoard3;
+    private javax.swing.JLabel scoreBoard4;
+    private javax.swing.JLabel scoreBoard5;
+    private javax.swing.JLabel scoreBoard6;
+    private javax.swing.JLabel scoreBoard7;
+    private javax.swing.JLabel scoreBoard8;
+    private javax.swing.JLabel scoreBoard9;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
@@ -738,28 +738,28 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     public void hide() {
         out.setText("");
         title.setText("Title Screen");
-        jButton2.setVisible(true);
-        jButton4.setVisible(true);
-        Record.setVisible(true);
+        counting.setVisible(true);
+        schedule.setVisible(true);
+        record.setVisible(true);
         score1.setVisible(false);
         score2.setVisible(false);
         score3.setVisible(false);
         score4.setVisible(false);
-        Clock1.setVisible(false);
-        Clock2.setVisible(false);
-        Clock3.setVisible(false);
-        jLabel1.setVisible(false);
-        jLabel2.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jLabel11.setVisible(false);
-        jLabel12.setVisible(false);
+        clock1.setVisible(false);
+        clock2.setVisible(false);
+        clock3.setVisible(false);
+        scoreBoard1.setVisible(false);
+        scoreBoard2.setVisible(false);
+        scoreBoard3.setVisible(false);
+        scoreBoard4.setVisible(false);
+        scoreBoard5.setVisible(false);
+        scoreBoard6.setVisible(false);
+        scoreBoard7.setVisible(false);
+        scoreBoard8.setVisible(false);
+        scoreBoard9.setVisible(false);
+        scoreBoard10.setVisible(false);
+        scoreBoard11.setVisible(false);
+        scoreBoard12.setVisible(false);
         aClock1.setText("");
         aClock2.setText("");
         aClock3.setText("");
@@ -778,7 +778,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
                 countClear();
                 out.setText("");
                 crnd = (int) Math.ceil(Math.random() * 9);//sets up next round
-                rnd = (int) Math.ceil(Math.random() * 2 + 4);
+                rnd = (int) Math.ceil(Math.random() * 5 - 1);
                 count = m.counting(crnd, count, getWidth(), getHeight());
                 countPos();
             } else if ((e.getKeyChar() == '0' || e.getKeyChar() == '1' || e.getKeyChar() == '2' || e.getKeyChar() == '3' || e.getKeyChar() == '4' || e.getKeyChar() == '5' || e.getKeyChar() == '6' || e.getKeyChar() == '7' || e.getKeyChar() == '8' || e.getKeyChar() == '9')) {

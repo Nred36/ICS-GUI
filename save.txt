@@ -1,8 +1,6 @@
-PNG_transparency_demonstration_1.png
-PNG_transparency_demonstration_1.png
-PNG_transparency_demonstration_1.png
-PNG_transparency_demonstration_1.png
-PNG_transparency_demonstration_1.png
+Gold-star-clipart-no-background-free-clipart-images.png
+green-square-md.png
+heart-clipart-RTddEEjT9.png
 download.jpg
 479px-Lol_circle.png
 7:00 am
@@ -16,17 +14,17 @@ download.jpg
 6:00 pm
 8:00 pm
 9:00 pm
-Wake Up
-Catch Bus
-O Canada
-Snack
-Gym
-Lunch
-Schools Over
-Get Home
-Dinner
-Bath
-Bed
+When Would You Wake Up
+When Would You Catch Bus
+When Is O Canada
+When Is Snack
+When Is Gym
+When Is Lunch
+When Is Schools Over
+When Would You Get Home
+When Is Dinner
+When Would You Have a Bath
+When Is Bed
 700.png
 830.png
 900.png
@@ -38,4 +36,4 @@ Bed
 600.png
 800.png
 900.png
-3
+0
