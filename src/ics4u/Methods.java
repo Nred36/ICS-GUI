@@ -43,18 +43,17 @@ public class Methods {
     }
 
     public String[][] score(String score[][], int n, int thisT) {
-
         String temp1 = "", temp2 = "";
         if (thisT != 0) {
             score[n][0] = thisT + "";
-            DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy hh:mm");
+            DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy hh:mm");//adds the date and time the score was added
             score[n][1] = dateFormat.format(new Date());
             n++;
         }
         if (n > 0) {
             for (int i = 0; i < n; i++) {
                 for (int j = 1; j < (n - i); j++) {
-                    if (Integer.parseInt(score[j - 1][0]) > Integer.parseInt(score[j][0])) {
+                    if (Integer.parseInt(score[j - 1][0]) > Integer.parseInt(score[j][0])) {//sorts the scoreboard using bubble sort
                         temp1 = score[j - 1][0];
                         score[j - 1][0] = score[j][0];
                         score[j][0] = temp1;
@@ -68,10 +67,10 @@ public class Methods {
         return (score);
     }
 
-    public int num(String[][] score) {
+    public int num(String[][] score) {//reads the number of scores saved
         int n = 0;
         try {
-            FileReader fr = new FileReader("score.txt"); //reads from text file (located in "files"
+            FileReader fr = new FileReader("score.txt"); //reads from text file (located in "files")
             BufferedReader br = new BufferedReader(fr);
             for (int r = 0; r < 25; r++) {
                 score[r][0] = br.readLine();

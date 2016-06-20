@@ -61,7 +61,6 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         } catch (IOException a) {
             System.out.println("Couldn't Load");//if it fails
         }
-
         initComponents();
         getContentPane().setBackground(Color.WHITE);
         addKeyListener(this);//starts recording key presses
@@ -127,7 +126,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         });
         getContentPane().setLayout(null);
 
-        counting.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        counting.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         counting.setText("Counting");
         counting.setBorder(null);
         counting.setBorderPainted(false);
@@ -143,7 +142,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         getContentPane().add(counting);
         counting.setBounds(342, 310, 100, 28);
 
-        schedule.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        schedule.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         schedule.setText("Schedule");
         schedule.setBorder(null);
         schedule.setFocusPainted(false);
@@ -158,7 +157,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         getContentPane().add(schedule);
         schedule.setBounds(742, 310, 100, 28);
 
-        record.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        record.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         record.setText("Record");
         record.setFocusable(false);
         record.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -306,89 +305,101 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         getContentPane().add(count9);
         count9.setBounds(610, 200, 100, 100);
 
-        scoreBoard12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard12.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard12);
-        scoreBoard12.setBounds(447, 389, 290, 15);
+        scoreBoard12.setBounds(387, 420, 410, 21);
         scoreBoard12.setVisible(false);
+        scoreBoard12.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard11.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard11);
-        scoreBoard11.setBounds(447, 375, 290, 15);
+        scoreBoard11.setBounds(387, 400, 410, 21);
         scoreBoard11.setVisible(false);
+        scoreBoard11.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard10.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard10);
-        scoreBoard10.setBounds(447, 361, 290, 15);
+        scoreBoard10.setBounds(387, 380, 410, 21);
         scoreBoard10.setVisible(false);
+        scoreBoard10.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard9.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard9);
-        scoreBoard9.setBounds(447, 347, 290, 15);
+        scoreBoard9.setBounds(387, 360, 410, 21);
         scoreBoard9.setVisible(false);
+        scoreBoard9.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard8.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard8);
-        scoreBoard8.setBounds(447, 333, 290, 15);
+        scoreBoard8.setBounds(387, 340, 410, 21);
         scoreBoard8.setVisible(false);
+        scoreBoard8.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard7.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard7);
-        scoreBoard7.setBounds(447, 319, 290, 15);
+        scoreBoard7.setBounds(387, 320, 410, 21);
         scoreBoard7.setVisible(false);
+        scoreBoard7.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard6.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard6);
-        scoreBoard6.setBounds(447, 305, 290, 15);
+        scoreBoard6.setBounds(387, 300, 410, 21);
         scoreBoard6.setVisible(false);
+        scoreBoard6.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard5.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard5);
-        scoreBoard5.setBounds(447, 291, 290, 15);
+        scoreBoard5.setBounds(387, 280, 410, 21);
         scoreBoard5.setVisible(false);
+        scoreBoard5.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard4);
-        scoreBoard4.setBounds(447, 277, 290, 15);
+        scoreBoard4.setBounds(387, 260, 410, 21);
         scoreBoard4.setVisible(false);
+        scoreBoard4.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard3);
-        scoreBoard3.setBounds(447, 263, 290, 15);
+        scoreBoard3.setBounds(387, 240, 410, 21);
         scoreBoard3.setVisible(false);
+        scoreBoard3.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard2);
-        scoreBoard2.setBounds(447, 249, 290, 15);
+        scoreBoard2.setBounds(387, 220, 410, 21);
         scoreBoard2.setVisible(false);
+        scoreBoard2.getAccessibleContext().setAccessibleDescription("");
 
-        scoreBoard1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scoreBoard1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         scoreBoard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreBoard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(scoreBoard1);
-        scoreBoard1.setBounds(447, 235, 290, 15);
+        scoreBoard1.setBounds(387, 200, 410, 21);
         scoreBoard1.setVisible(false);
+        scoreBoard1.getAccessibleContext().setAccessibleDescription("");
 
         info.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -405,7 +416,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     }// </editor-fold>//GEN-END:initComponents
 
     private void countingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countingActionPerformed
-        title.setText("Counting");//switches to the counting game
+        title.setText("Count the Number of Objects");//switches to the counting game
         counting.setVisible(false);
         schedule.setVisible(false);
         record.setVisible(false);
@@ -415,9 +426,9 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         score4.setVisible(true);
         back.setVisible(true);
         mode = 1;
-        rnd = (int) Math.ceil(Math.random() * 5 - 1);//runs corresponding game
-        count = m.counting(crnd, count, getWidth(), getHeight());
-        countPos();
+        rnd = (int) Math.ceil(Math.random() * 5 - 1);//randomizes the type of shape
+        count = m.counting(crnd, count, getWidth(), getHeight());//randomizes the number of shapes and where they are
+        countPos();//moves the labels to their new place and sets their icon
     }//GEN-LAST:event_countingActionPerformed
     public void countClear() {//clears the icons from the shapes
         count1.setIcon(null);
@@ -431,48 +442,48 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         count9.setIcon(null);
     }
 
-    public void countPos() {
+    public void countPos() {//sets the lables position and icon
         if (crnd >= 1) {
             count1.setBounds(count[0][0], count[0][1], 100, 100);
-            count1.setIcon(in[rnd]);//draws the blocks in there random position
+            count1.setIcon(in[rnd]);
         }
         if (crnd >= 2) {
             count2.setBounds(count[1][0], count[1][1], 100, 100);
-            count2.setIcon(in[rnd]);//draws the blocks in there random position
+            count2.setIcon(in[rnd]);
         }
         if (crnd >= 3) {
             count3.setBounds(count[2][0], count[2][1], 100, 100);
-            count3.setIcon(in[rnd]);//draws the blocks in there random position
+            count3.setIcon(in[rnd]);
         }
         if (crnd >= 4) {
             count4.setBounds(count[3][0], count[3][1], 100, 100);
-            count4.setIcon(in[rnd]);//draws the blocks in there random position
+            count4.setIcon(in[rnd]);
         }
         if (crnd >= 5) {
             count5.setBounds(count[4][0], count[4][1], 100, 100);
-            count5.setIcon(in[rnd]);//draws the blocks in there random position
+            count5.setIcon(in[rnd]);
         }
         if (crnd >= 6) {
             count6.setBounds(count[5][0], count[5][1], 100, 100);
-            count6.setIcon(in[rnd]);//draws the blocks in there random position
+            count6.setIcon(in[rnd]);
         }
         if (crnd >= 7) {
             count7.setBounds(count[6][0], count[6][1], 100, 100);
-            count7.setIcon(in[rnd]);//draws the blocks in there random position
+            count7.setIcon(in[rnd]);
         }
         if (crnd >= 8) {
             count8.setBounds(count[7][0], count[7][1], 100, 100);
-            count8.setIcon(in[rnd]);//draws the blocks in there random position
+            count8.setIcon(in[rnd]);
         }
         if (crnd >= 9) {
             count9.setBounds(count[8][0], count[8][1], 100, 100);
-            count9.setIcon(in[rnd]);//draws the blocks in there random position
+            count9.setIcon(in[rnd]);
         }
     }
     private void scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleActionPerformed
-        title.setText("Schedule");
+        title.setText("Match the activity to the time it happens at");
         counting.setVisible(false);
-        schedule.setVisible(false);
+        schedule.setVisible(false);//prepares for time game
         record.setVisible(false);
         mode = 1;
         back.setVisible(true);
@@ -482,11 +493,11 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         aClock1.setVisible(true);
         aClock2.setVisible(true);
         aClock3.setVisible(true);
-        time();
+        time();//runs the game
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void clock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock1ActionPerformed
-        checkClock(aClock1.getText());
+        checkClock(aClock1.getText());//checks the name of the button
     }//GEN-LAST:event_clock1ActionPerformed
 
     private void clock2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock2ActionPerformed
@@ -496,16 +507,16 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     private void clock3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clock3ActionPerformed
         checkClock(aClock3.getText());
     }//GEN-LAST:event_clock3ActionPerformed
-
+//when the window is closing
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        score = m.score(score, m.num(score), thisT);
+        score = m.score(score, m.num(score), thisT);//updates score
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("score.txt")); //starts writing   
             int up = 0;
             if (thisT > 0) {
                 up = 1;
             }
-            for (int i = 0; i < n + up; i++) {
+            for (int i = 0; i < n + up; i++) {//writes scores
                 pw.println(score[i][0]);
                 pw.println(score[i][1]);
             }
@@ -521,7 +532,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
             for (int r = 0; r < 3; r++) {
                 for (int c = 0; c < 11; c++) {
                     pw.println(clock[r][c]);
-                }
+                }//rewrites save with a new highest streak
             }
             pw.println(streak);
             pw.close();
@@ -533,15 +544,15 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     private void recordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordActionPerformed
         title.setText("Record");
         record.setVisible(false);
-        counting.setVisible(false);
+        counting.setVisible(false);//runs the scoreboard
         schedule.setVisible(false);
         back.setVisible(true);
-        score = m.score(score, m.num(score), thisT);
+        score = m.score(score, m.num(score), thisT);//updates scores
         if (n != 0) {
-            scoreBoard1.setText("Highest Score: " + streak);
+            scoreBoard1.setText("Highest Score: " + streak);//shows highest streak
             scoreBoard1.setVisible(true);
             if (n >= 1) {
-                scoreBoard2.setText("A score of " + score[0][0] + " on " + score[0][1]);
+                scoreBoard2.setText("A score of " + score[0][0] + " on " + score[0][1]);//shows scores in desending order
                 scoreBoard2.setVisible(true);
             }
             if (n >= 2) {
@@ -591,11 +602,11 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
     }//GEN-LAST:event_recordActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        hide();
+        hide();//makes only the start menu buttons visible
         back.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
     public void checkClock(String s) {
-        if (s.equals(check)) {
+        if (s.equals(check)) {//checks if you clicked the right button in the schedule game
             out.setText("Correct!");
             time();
         } else {
@@ -603,7 +614,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         }
     }
 
-    public void time() {
+    public void time() {//generates a random time and its corrisponding activity from the list
         crnd = (int) Math.ceil(Math.random() * 3);
         rnd = (int) Math.ceil(Math.random() * 11 - 1);
         info.setText(clock[1][rnd]);
@@ -619,7 +630,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         }
         check = clock[0][rnd];
         int r1, r2;
-        do {
+        do {//creates 2 other random times that arent the original
             r1 = (int) Math.ceil(Math.random() * 11 - 1);
             r2 = (int) Math.ceil(Math.random() * 11 - 1);
             if (r1 != rnd) {
@@ -735,7 +746,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
         requestFocus();//if something happens ie: click off window it forces its self to the front (needed for key presses)        
     }
 
-    public void hide() {
+    public void hide() {//sets the program to the start screen
         out.setText("");
         title.setText("Title Screen");
         counting.setVisible(true);
@@ -770,8 +781,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
 
     public void keyPressed(KeyEvent e) {
         if ((e.getKeyChar() == KeyEvent.VK_ESCAPE)) {
-            hide();
-
+            hide();//brings you back the the main menu
         }
         if (mode == 1) {//only lets numbers be pressed
             if (out.getText().equals("Correct!")) {
@@ -794,7 +804,7 @@ public class ICS extends javax.swing.JFrame implements ActionListener, KeyListen
                 }
             }
         }
-        if (curr > thisT) {
+        if (curr > thisT) {//checks if the current streak is higher then the all time highest
             thisT = curr;
         }
         if (curr > streak) {
